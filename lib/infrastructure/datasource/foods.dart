@@ -1,3 +1,5 @@
+// Eliminamos el import innecesario
+// import 'package:flutter/material.dart';
 import 'package:example_menu/domain/models/food.dart';
 import 'package:example_menu/domain/models/info_card.dart';
 

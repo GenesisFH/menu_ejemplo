@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(
     MultiProvider(
-      providers: [
+      providers: [ // el provider es un widget que permite compartir datos entre widgets
         ChangeNotifierProvider(create: (context) => SelectCardProvider()),
         ChangeNotifierProvider(create: (context) => PricesForQuantity()),
         ChangeNotifierProvider(create: (context) => CartProvider()),

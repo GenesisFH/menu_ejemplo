@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 class BottonSearch extends StatelessWidget {
-  const BottonSearch({super.key});
+  final Function(String) onSearch;
+
+  const BottonSearch({super.key, required this.onSearch});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController searchController = TextEditingController();
+
     return FloatingActionButton(
       onPressed: () {
         showModalBottomSheet(
@@ -15,8 +19,33 @@ class BottonSearch extends StatelessWidget {
           ),
           builder: (context) {
             return Padding(
-              padding: EdgeInsets.all(18.0),
-              child: Container(child: Placeholder(color: Colors.red)),
+              padding: const EdgeInsets.all(18.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextField(
+                    controller: searchController,
+                    autofocus: true,
+                    decoration: InputDecoration(
+                      hintText: 'Buscar comida...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.search),
+                        onPressed: () {
+                          onSearch(searchController.text);
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                    onSubmitted: (value) {
+                      onSearch(value);
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
             );
           },
         );

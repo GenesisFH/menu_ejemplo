@@ -15,9 +15,26 @@ class HomeMenuScreen extends StatefulWidget {
 
 class _HomeMenuScreenState extends State<HomeMenuScreen>
     with CustomText, Header {
+  List foodList = Foods.foods;
+  List filteredList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredList = foodList;
+  }
+
+  void _searchFood(String query) {
+    setState(() {
+      filteredList = foodList
+          .where((food) =>
+              food.name.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final foodList = Foods.foods;
     return TamplateScreens(
       backgroundColor: Color(0xFF21BFBD),
       header: getHeader(),
@@ -37,16 +54,16 @@ class _HomeMenuScreenState extends State<HomeMenuScreen>
             child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.58,
               child: ListView.builder(
-                itemCount: foodList.length,
+                itemCount: filteredList.length,
                 itemBuilder: (context, index) {
-                  return BuildFoodItem(food: foodList[index]);
+                  return BuildFoodItem(food: filteredList[index]);
                 },
               ),
             ),
           ),
         ],
       ),
-      floatingActionButton: BottonSearch(),
+      floatingActionButton: BottonSearch(onSearch: _searchFood),
     );
   }
 }
