@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:example_menu/presentations/screens/cart_screen.dart';
 
 mixin Header {
   AppBar getHeader({Widget? widgetChildText, BuildContext? context}) {
@@ -22,7 +23,12 @@ mixin Header {
           icon: Icon(Icons.shopping_basket),
           color: Colors.white,
           onPressed: () {
-            print('el click del boton de la cesta');
+            if (context != null) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CartScreen()),
+              );
+            }
           },
         ),
       ],

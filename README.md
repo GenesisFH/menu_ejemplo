@@ -1,16 +1,22 @@
-# example_menu
+config/router/app_router.dart {
+	
+	la diferencia principal es que ahora la lógica para manejar la ruta de detalle (/detail/:id) se delega al 	método RouteLogic.getDetailFood en lugar de estar directamente en el archivo de rutas. Esto ayuda a mantener 	el archivo app_router.dart más limpio y enfocado únicamente en la definición de rutas.
 
-A new Flutter project.
+}
 
-## Getting Started
+presentations/provider/cart_provider.dart {
 
-This project is a starting point for a Flutter application.
+	El archivo cart_provider.dart contiene la implementación de un CartProvider, que es un ChangeNotifier 	utilizado para gestionar el estado del carrito de compras en la aplicación
 
-A few resources to get you started if this is your first Flutter project:
+}
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Presentation/widgets/header.dart {
+	
+	Modifiqué el botón de la cesta (ícono de shopping_basket) para que, al hacer clic, navegue a la pantalla 	CartScreen utilizando GoRouter en lugar de Navigator.push. Esto asegura que la navegación sea consistente 
+	con el sistema de rutas que estás utilizando.
+}
+
+Presentations/widgets/build_cart_item.dart {
+    // pendiente a documentar
+}
